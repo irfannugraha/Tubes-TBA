@@ -442,7 +442,7 @@ public class TUBES {
         
         i++;
         
-        while( in[i] != ' ' ){
+        while( in[i] != '\0' ){
             switch(state){
                 case 'A':
                     switch(in[i]){
@@ -611,7 +611,7 @@ public class TUBES {
         
         i++;
         
-        while( in[i] != ' ' ){
+        while( in[i] != '\0' ){
             switch(state){
                 case 'A':
                     switch(in[i]){
@@ -882,21 +882,20 @@ public class TUBES {
         int panjang = 0;
         
         while( i < s.length ){
-            if( s[i] == ' ' || s[i] == '.'){
+            if( s[i] == ' ' ){
                 panjang++;
             }
             i++;
         }
         
-        char[][] out = new char[panjang+1][20];
-        out[0] = s;
+        char[][] out = new char[panjang][20];
         
         i = 0;
-        int j = 1;
+        int j = 0;
         int k = 0;
         while( j < out.length ){
             k = 0;
-            while(s[i] != ' ' && s[i] != '.'){
+            while( s[i] != ' ' ){
                 out[j][k] = s[i];
                 i++;
                 k++;
@@ -910,7 +909,7 @@ public class TUBES {
 
     static boolean cekSPOK(String input){
         char[][] c = pemisah(input);
-        int i = 1;
+        int i = 0;
         String[] kal = new String[ c.length ];
         String state = "q1";
         
@@ -919,7 +918,7 @@ public class TUBES {
             i++;
         }
         
-        i=1;
+        i=0;
         while( i < kal.length ) {
             switch(state){
                 case "q1":
@@ -937,46 +936,22 @@ public class TUBES {
                 case "q3":
                     if ( cekObjek( kal[i] ) )
                         state = "q4";
-                    if ( cekKeterangan( kal[i] ) )
+                    else if ( cekKeterangan( kal[i] ) )
                         state = "q5";
-                case "q4":
-                    if ( cekKeterangan(kal[i]) )
-                        state = "q5";
-                    
-            }
-            i++;
-        }
-        if( state == "q5" || state == "q4" || state == "q3" )
-            return true;
-        else
-            return false;
-    }
-    
-    static boolean cekSP(String input){
-        char[][] c = pemisah(input);
-        int i = 1;
-        String[] kal = new String[ c.length ];
-        String state = "q1";
-        
-        while( i < c.length ){
-            kal[i] = String.copyValueOf(c[i]);
-            i++;
-        }
-        
-        i=1;
-        while( i < kal.length ) {
-            switch(state){
-                case "q1":
-                    if( cekSubjek( kal[i] ) )
-                        state = "q2";
                     else
                         state = "X";
                     break;
-                case "q2":
-                    if( cekPredikat( kal[i] ) )
-                        state = "q3";
+                case "q4":
+                    if ( cekKeterangan(kal[i]) )
+                        state = "q5";
                     else
                         state = "X";
+                    break;
+                case "q5":
+                    state = "q5";
+                    break;
+                case "X":
+                    state = "X";
                     break;
             }
             i++;
@@ -988,10 +963,22 @@ public class TUBES {
     }
     
     public static void main(String[] args) {
-        String input = "sepatu ";
-        //boolean b = cekSP(input);
-        boolean b = cekObjek(input);
-        System.out.println( b );
+        Scanner s = new Scanner(System.in);
+        System.out.println("----- PENDETEKSI KALIMAT YANG BAIK DAN BENAR -----");
+        System.out.println("--------------------------------------------------");
+        System.out.println("Kalimat yang valid : ");
+        System.out.println(" Subjek : aku, kamu, kita, mereka, kalian");
+        System.out.println(" Predikat : membeli, menjual, melihat, memberi, mencuri");
         
+        System.out.print("\n Silahkan masukan kalimat : ");
+        String input = s.nextLine();
+
+        System.out.print("\n");
+        
+        boolean b = cekSPOK(input+" ");
+        if( b )
+            System.out.println("(!)Selamat, kalimat anda adalah kalimat yang baik");
+        else
+            System.out.println("(!)Maaf, kalimat anda adalah kalimat yang salah"); 
     }
 }
