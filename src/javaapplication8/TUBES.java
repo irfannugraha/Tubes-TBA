@@ -2,7 +2,7 @@ package javaapplication8;
 
 import java.util.Scanner;
 
-public class Driver {
+public class TUBES {
     
     static boolean cekSubjek(String input){
         char[] in = input.toCharArray();
@@ -28,7 +28,7 @@ public class Driver {
         
         while( in[i] != '\0' ){
             switch(state){
-                case 'A':{
+                case 'A':
                     switch(in[i]){
                         case 'k':
                             state = 'D';
@@ -38,7 +38,6 @@ public class Driver {
                             break;
                     }
                     break;
-                }
                 case 'B':
                     switch(in[i]){
                         case 'a':
@@ -421,6 +420,462 @@ public class Driver {
             return false;        
     }  
     
+    static boolean cekObjek(String input){
+        char[] in = input.toCharArray();
+        int i = 0;
+        char state = 'X';
+        
+        switch(in[i]){
+            case 's':
+                state = 'A';
+                break;
+            case 'b':
+                state = 'C';
+                break;
+            case 'm':
+                state = 'C';
+                break;
+            default:
+                state = 'X';
+                break;
+        }
+        
+        i++;
+        
+        while( in[i] != ' ' ){
+            switch(state){
+                case 'A':
+                    switch(in[i]){
+                        case 'e':
+                            state = 'B';
+                            break;
+                        default:
+                            state = 'X';
+                            break;
+                    }
+                    break;
+                    
+                case 'B':
+                    switch(in[i]){
+                        case 'p':
+                            state = 'C';
+                            break;
+                        default:
+                            state = 'X';
+                            break;
+                    }
+                    break;
+                    
+                case 'C':
+                    switch(in[i]){
+                        case 'a':
+                            state = 'D';
+                            break;
+                        case 'u':
+                            state = 'F';
+                            break;
+                        case 'i':
+                            state = 'D';
+                            break;
+                        default:
+                            state = 'X';
+                            break;
+                    }             
+                    break;
+                    
+                case 'D':
+                    switch(in[i]){
+                        case 't':
+                            state = 'E';
+                            break;
+                        case 'j':
+                            state = 'E';
+                            break;
+                        case 'k':
+                            state = 'C';
+                            break;
+                        case 'n':
+                            state = 'G';
+                            break;
+                        default:
+                            state = 'X';
+                            break;
+                    }             
+                    break;
+                    
+                case 'E':
+                    switch(in[i]){
+                        case 'u':
+                            state = 'J';
+                            break;
+                        default:
+                            state = 'X';
+                            break;
+                    }
+                    break;
+                    
+                case 'F':
+                    switch(in[i]){
+                        case 'k':
+                            state = 'E';
+                            break;
+                        default:
+                            state = 'X';
+                            break;
+                    }
+                    break;
+                    
+                case 'G':
+                    switch(in[i]){
+                        case 'a':
+                            state = 'H';
+                            break;
+                        case 'u':
+                            state = 'I';
+                            break;
+                        default:
+                            state = 'X';
+                            break;
+                    }
+                    break;
+                    
+                case 'H':
+                    switch(in[i]){
+                        case 'n':
+                            state = 'J';
+                            break;
+                        default:
+                            state = 'X';
+                            break;
+                    }             
+                    break;
+                    
+                case 'I':
+                    switch(in[i]){
+                        case 'm':
+                            state = 'G';
+                            break;
+                        default:
+                            state = 'X';
+                            break;
+                    }             
+                    break;      
+                    
+                case 'J':
+                    switch(in[i]){
+                        case ' ':
+                            state = 'J';
+                            break;
+                        default:
+                            state = 'X';
+                            break;
+                    }
+                    break;            
+                    
+                case 'X':
+                    state = 'X';
+                    break;
+            }
+            i++;
+        }
+        
+        if(state == 'J')
+            return true;
+        else
+            return false;
+    }    
+    
+    static boolean cekKeterangan(String input){
+        char[] in = input.toCharArray();
+        int i = 0;
+        char state = 'X';
+        
+        switch(in[i]){
+            case 'b':
+                state = 'A';
+                break;
+            case 'k':
+                state = 'B';
+                break;
+            case 'l':
+                state = 'C';
+                break;
+            case 'n':
+                state = 'D';
+            case 's':
+                state = 'E';
+            default:
+                state = 'X';
+                break;
+        }
+        
+        i++;
+        
+        while( in[i] != ' ' ){
+            switch(state){
+                case 'A':
+                    switch(in[i]){
+                        case 'e':
+                            state = 'F';
+                            break;
+                        default:
+                            state = 'X';
+                            break;
+                    }
+                    break;
+                case 'B':
+                    switch(in[i]){
+                        case 'e':
+                            state = 'G';
+                            break;
+                        default:
+                            state = 'X';
+                            break;
+                    }
+                    break;
+                case 'C':
+                    switch(in[i]){
+                        case 'u':
+                            state = 'H';
+                            break;
+                        default:
+                            state = 'X';
+                            break;
+                    }             
+                    break;
+                case 'D':
+                    switch(in[i]){
+                        case 'a':
+                            state = 'I';
+                            break;
+                        default:
+                            state = 'X';
+                            break;
+                    }             
+                    break;
+                case 'E':
+                    switch(in[i]){
+                        case 'e':
+                            state = 'J';
+                            break;
+                        default:
+                            state = 'X';
+                            break;
+                    }
+                    break;
+                case 'F':
+                    switch(in[i]){
+                        case 's':
+                            state = 'K';
+                            break;
+                        default:
+                            state = 'X';
+                            break;
+                    }
+                    break;
+                case 'G':
+                    switch(in[i]){
+                        case 'm':
+                            state = 'L';
+                            break;
+                        default:
+                            state = 'X';
+                            break;
+                    }
+                    break;
+                case 'H':
+                    switch(in[i]){
+                        case 's':
+                            state = 'M';
+                            break;
+                        default:
+                            state = 'X';
+                            break;
+                    }             
+                    break;
+                case 'I':
+                    switch(in[i]){
+                        case 'n':
+                            state = 'N';
+                            break;
+                        default:
+                            state = 'X';
+                            break;
+                    }             
+                    break;
+                case 'J':
+                    switch(in[i]){
+                        case 'k':
+                            state = 'O';
+                            break;
+                        default:
+                            state = 'X';
+                            break;
+                    }             
+                    break;
+                case 'K':
+                    switch(in[i]){
+                        case 'o':
+                            state = 'P';
+                            break;
+                        default:
+                            state = 'X';
+                            break;
+                    }             
+                    break;
+                case 'L':
+                    switch(in[i]){
+                        case 'a':
+                            state = 'Q';
+                            break;
+                        default:
+                            state = 'X';
+                            break;
+                    }
+                    break;
+                case 'M':
+                    switch(in[i]){
+                        case 'a':
+                            state = 'Z';
+                            break;
+                        default:
+                            state = 'X';
+                            break;
+                    }             
+                    break;
+                case 'N':
+                    switch(in[i]){
+                        case 't':
+                            state = 'R';
+                            break;
+                        default:
+                            state = 'X';
+                            break;
+                    }
+                    break;
+                case 'O':
+                    switch(in[i]){
+                        case 'a':
+                            state = 'S';
+                            break;
+                        default:
+                            state = 'X';
+                            break;
+                    }
+                    break;
+                case 'P':
+                    switch(in[i]){
+                        case 'k':
+                            state = 'Z';
+                            break;
+                        default:
+                            state = 'X';
+                            break;
+                    }
+                    break;      
+                case 'Q':
+                    switch(in[i]){
+                        case 'r':
+                            state = 'T';
+                            break;
+                        default:
+                            state = 'X';
+                            break;
+                    }
+                    break;
+                case 'R':
+                    switch(in[i]){
+                        case 'i':
+                            state = 'Z';
+                            break;
+                        default:
+                            state = 'X';
+                            break;
+                    }
+                    break;
+                case 'S':
+                    switch(in[i]){
+                        case 'r':
+                            state = 'U';
+                            break;
+                        default:
+                            state = 'X';
+                            break;
+                    }
+                    break;
+                case 'T':
+                    switch(in[i]){
+                        case 'i':
+                            state = 'V';
+                            break;
+                        default:
+                            state = 'X';
+                            break;
+                    }
+                    break;
+                case 'U':
+                    switch(in[i]){
+                        case 'a':
+                            state = 'W';
+                            break;
+                        default:
+                            state = 'X';
+                            break;
+                    }
+                    break;
+                case 'V':
+                    switch(in[i]){
+                        case 'n':
+                            state = 'Z';
+                            break;
+                        default:
+                            state = 'X';
+                            break;
+                    }
+                    break;
+                case 'W':
+                    switch(in[i]){
+                        case 'n':
+                            state = 'Y';
+                            break;
+                        default:
+                            state = 'X';
+                            break;
+                    }
+                    break;                        
+                case 'Y':
+                    switch(in[i]){
+                        case 'g':
+                            state = 'Z';
+                            break;
+                        default:
+                            state = 'X';
+                            break;
+                    }
+                    break;                    
+                case 'Z':
+                    switch(in[i]){
+                        case ' ':
+                            state = 'Z';
+                            break;
+                        default:
+                            state = 'X';
+                            break;
+                    }
+                    break;
+                case 'X':
+                    state = 'X';
+                    break;
+            }
+            i++;
+        }
+        
+        if(state == 'Z')
+            return true;
+        else
+            return false;
+    }    
+    
     static char[][] pemisah(String in){
         char[] s = in.toCharArray(); 
         int i = 0;
@@ -451,6 +906,50 @@ public class Driver {
         }
         
         return out;
+    }
+
+    static boolean cekSPOK(String input){
+        char[][] c = pemisah(input);
+        int i = 1;
+        String[] kal = new String[ c.length ];
+        String state = "q1";
+        
+        while( i < c.length ){
+            kal[i] = String.copyValueOf(c[i]);
+            i++;
+        }
+        
+        i=1;
+        while( i < kal.length ) {
+            switch(state){
+                case "q1":
+                    if( cekSubjek( kal[i] ) )
+                        state = "q2";
+                    else
+                        state = "X";
+                    break;
+                case "q2":
+                    if( cekPredikat( kal[i] ) )
+                        state = "q3";
+                    else
+                        state = "X";
+                    break;
+                case "q3":
+                    if ( cekObjek( kal[i] ) )
+                        state = "q4";
+                    if ( cekKeterangan( kal[i] ) )
+                        state = "q5";
+                case "q4":
+                    if ( cekKeterangan(kal[i]) )
+                        state = "q5";
+                    
+            }
+            i++;
+        }
+        if( state == "q5" || state == "q4" || state == "q3" )
+            return true;
+        else
+            return false;
     }
     
     static boolean cekSP(String input){
@@ -489,8 +988,9 @@ public class Driver {
     }
     
     public static void main(String[] args) {
-        String input = "aku menjual.";
-        boolean b = cekSP(input);
+        String input = "sepatu ";
+        //boolean b = cekSP(input);
+        boolean b = cekObjek(input);
         System.out.println( b );
         
     }
